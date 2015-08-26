@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrInterface;
+import com.r0adkll.slidr.model.SlidrPosition;
 import com.r0adkll.slidr.widget.SliderPanel;
 
 /**
@@ -100,6 +101,12 @@ public class Slidr {
             public void unlock() {
                 panel.unlock();
             }
+
+            @Override
+            public void updatePosition(SlidrPosition position)
+            {
+                panel.setPosition(position);
+            }
         };
 
         // Return the lock interface
@@ -188,6 +195,12 @@ public class Slidr {
             public void unlock() {
                 panel.unlock();
             }
+
+            @Override
+            public void updatePosition(SlidrPosition position)
+            {
+                panel.setPosition(position);
+            }
         };
 
         // Return the lock interface
@@ -258,6 +271,12 @@ public class Slidr {
             @Override
             public void unlock() {
                 panel.unlock();
+            }
+
+            @Override
+            public void updatePosition(SlidrPosition position)
+            {
+                panel.setPosition(position);
             }
         };
 

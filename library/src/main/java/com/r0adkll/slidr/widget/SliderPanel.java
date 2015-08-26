@@ -89,11 +89,38 @@ public class SliderPanel extends FrameLayout {
     private void init(){
         mScreenWidth = getResources().getDisplayMetrics().widthPixels;
 
+        setPosition(mConfig.getPosition());
+
+        ViewGroupCompat.setMotionEventSplittingEnabled(this, false);
+
+        // Setup the dimmer view
+        mDimView = new View(getContext());
+        mDimView.setBackgroundColor(mConfig.getScrimColor());
+        mDimView.setAlpha(mConfig.getScrimStartAlpha());
+
+        // Add the dimmer view to the layout
+        addView(mDimView);
+
+        /*
+         * This is so we can get the height of the view and
+         * ignore the system navigation that would be included if we
+         * retrieved this value from the DisplayMetrics
+         */
+        post(new Runnable() {
+            @Override
+            public void run() {
+                mScreenHeight = getHeight();
+            }
+        });
+    }
+
+    public void setPosition(SlidrPosition position)
+    {
         final float density = getResources().getDisplayMetrics().density;
         final float minVel = MIN_FLING_VELOCITY * density;
 
         ViewDragHelper.Callback callback;
-        switch (mConfig.getPosition()){
+        switch (position){
             case LEFT:
                 callback = mLeftCallback;
                 mEdgePosition = ViewDragHelper.EDGE_LEFT;
@@ -126,29 +153,6 @@ public class SliderPanel extends FrameLayout {
         mDragHelper = ViewDragHelper.create(this, mConfig.getSensitivity(), callback);
         mDragHelper.setMinVelocity(minVel);
         mDragHelper.setEdgeTrackingEnabled(mEdgePosition);
-
-        ViewGroupCompat.setMotionEventSplittingEnabled(this, false);
-
-        // Setup the dimmer view
-        mDimView = new View(getContext());
-        mDimView.setBackgroundColor(mConfig.getScrimColor());
-        mDimView.setAlpha(mConfig.getScrimStartAlpha());
-
-        // Add the dimmer view to the layout
-        addView(mDimView);
-
-        /*
-         * This is so we can get the height of the view and
-         * ignore the system navigation that would be included if we
-         * retrieved this value from the DisplayMetrics
-         */
-        post(new Runnable() {
-            @Override
-            public void run() {
-                mScreenHeight = getHeight();
-            }
-        });
-
     }
 
     /***********************************************************************************************
