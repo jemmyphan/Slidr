@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+
+ext {
+    PUBLISH_GROUP_ID = 'com.jemmyphan'
+    PUBLISH_ARTIFACT_ID = 'slidr'
+    PUBLISH_VERSION = '1.1'
+}
 
 android {
     compileSdkVersion 22
@@ -20,5 +25,4 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.1'
 }
 
-apply from: '../gradle-mvn-push.gradle'
-
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
