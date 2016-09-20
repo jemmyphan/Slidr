@@ -3,6 +3,7 @@ Slidr
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.r0adkll/slidableactivity/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.r0adkll/slidableactivity) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Slidr-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1364) [![Stories in Ready](https://badge.waffle.io/r0adkll/Slidr.png?label=ready&title=Ready)](https://waffle.io/r0adkll/Slidr)
 
 Easily add slide-to-dismiss functionality to your Activity by calling `Slidr.attach(this)` in your `onCreate(..)` method.
+This lib is originally from [r0adkll](https://github.com/r0adkll/Slidr) [Simon-Raes](https://github.com/Simon-Raes/Slidr) 
 
 ![Slidr Example](images/slidr_gif.gif "Gif Example")
 
@@ -71,6 +72,10 @@ SlidrInterface.unlock();
 
 These methods lock or unlock the slidable touch interface.
 
+`SlidrInterface.updatePosition(...)` to update Slider Dismiss direction
+
+`SlidrInterface.getContentView()` which return Slidr base view;
+
 The theme that you use for your sliding activity must have these attributes set:
 
 ```xml
@@ -97,28 +102,8 @@ Then in the layout of your activity you must give it a background like this;
 Include this line in your gradle build file:
 
 ```groovy
-compile 'com.r0adkll:slidableactivity:2.0.3'
+compile 'com.jemmyphan:slidr:1.2'
 ```
-
-For Snapshots, include these lines in your gradle files:
-
-```groovy
-repositories {
-    jcenter()
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-}
-```
-
-```groovy
-dependencies{
-	compile 'com.r0adkll:slidableactivity:2.0.4-SNAPSHOT'
-}
-```
-
-
-## Author
-
--	Drew Heavner, **[r0adkll](http://r0adkll.com)**
 
 ## License
 
