@@ -155,6 +155,10 @@ public class SliderPanel extends FrameLayout {
         mDragHelper.setEdgeTrackingEnabled(mEdgePosition);
     }
 
+    public View getmDimView() {
+        return this.mDimView;
+    }
+
     /***********************************************************************************************
      *
      * Touch Methods

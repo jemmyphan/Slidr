@@ -107,6 +107,11 @@ public class Slidr {
             {
                 panel.setPosition(position);
             }
+
+            @Override
+            public View getContentView() {
+                return panel.getmDimView();
+            }
         };
 
         // Return the lock interface
@@ -201,6 +206,11 @@ public class Slidr {
             {
                 panel.setPosition(position);
             }
+
+            @Override
+            public View getContentView() {
+                return panel.getmDimView();
+            }
         };
 
         // Return the lock interface
@@ -277,6 +287,11 @@ public class Slidr {
             public void updatePosition(SlidrPosition position)
             {
                 panel.setPosition(position);
+            }
+
+            @Override
+            public View getContentView() {
+                return panel.getmDimView();
             }
         };
 

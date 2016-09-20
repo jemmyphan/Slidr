@@ -1,9 +1,11 @@
 package com.r0adkll.slidr.example;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import com.r0adkll.deadskunk.views.AspectRatioImageView;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.example.model.AndroidOS;
 import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrInterface;
 import com.r0adkll.slidr.model.SlidrPosition;
 
 import butterknife.ButterKnife;
@@ -62,6 +65,7 @@ public class ViewerActivity extends AppCompatActivity {
         SlidrConfig config = new SlidrConfig.Builder()
                 .primaryColor(primary)
                 .secondaryColor(secondary)
+                .scrimColor(getResources().getColor(R.color.abc_primary_text_material_light))
                 .position(position)
                 .velocityThreshold(2400)
                 .distanceThreshold(.25f)
@@ -70,7 +74,8 @@ public class ViewerActivity extends AppCompatActivity {
                 .build();
 
         // Attach the Slidr Mechanism to this activity
-        Slidr.attach(this, config);
+
+        SlidrInterface slidrInterface = Slidr.attach(this, config);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("");
